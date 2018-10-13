@@ -1,0 +1,22 @@
+{
+  "name": "tidal-lambda",
+  "version": "1.0.0",
+  "description": "lambda that uses pupeteer to obtain a tidal session id, and then enable calls to their api",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "rm -r ./test/out/ && tsc && cd test && jest",
+    "build": "rm -r ./dist && tsc && npm run start",
+    "start": "cd dist && node index.js"
+  },
+  "keywords": [
+    "tidal",
+    "api"
+  ],
+  "author": "amman.vedi@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "@types/puppeteer": "^1.9.0",
+    "jest": "^23.6.0",
+    "puppeteer": "^1.9.0"
+  }
+}
