@@ -1,0 +1,14 @@
+language: node_js
+dist: trusty
+addons:
+    chrome: stable
+sudo: required
+node_js:
+    - '9'
+install:
+    - npm install
+before_script:
+    - npm install -g typescript
+    - npm install -g jest
+script:
+    - npm test
