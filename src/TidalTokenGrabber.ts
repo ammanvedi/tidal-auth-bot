@@ -12,8 +12,6 @@ const DEFAULT_CONFIG = {
     }
 };
 
-console.log( 'oooouuuutttt', path.join( process.cwd(), 'out' ) )
-
 export interface TidalAuthConfig {
     username: string,
     password: string
@@ -34,10 +32,7 @@ export default class TidalTokenGrabber {
     async createBrowser() {
 
         try {
-            this.browser = await puppeteer.launch( {
-                headless: false,
-                slowMo: 50
-            } );
+            this.browser = await puppeteer.launch();
         } catch ( error ) {
             console.log( 'error launching' );
             return;
