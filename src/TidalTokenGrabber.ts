@@ -42,7 +42,9 @@ export default class TidalTokenGrabber {
     async createBrowser() {
 
         try {
-            this.browser = await puppeteer.launch();
+            this.browser = await puppeteer.launch( {
+                args: ['--no-sandbox', '--disable-setuid-sandbox']
+            } );
         } catch ( error ) {
             console.log( 'error launching', error );
             return;
