@@ -4,12 +4,6 @@ const fs = require( 'fs' );
 
 jest.setTimeout( 80000 );
 
-try {
-    fs.mkdirSync( './out' );
-} catch ( err ) {
-    console.log( 'directory already exists' );
-}
-
 describe( 'Tidal Server', () => {
 
     const ts = new Server( {

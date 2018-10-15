@@ -6,7 +6,7 @@
   "scripts": {
     "test": "rm -r ./test/out/ || tsc && cd test && jest --runInBand",
     "build": "rm -r ./dist && tsc && npm run start",
-    "start": "cd dist && node index.js"
+    "start": "cd dist && node run.js"
   },
   "keywords": [
     "tidal",

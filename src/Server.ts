@@ -71,7 +71,10 @@ export default class TidalServer {
         .then( ( values: Array<any> )  => {
             const favoritesJSON: object = values[ 1 ];
             this.cache.setKey( 'favorites', favoritesJSON );
-        } )  
+        } )
+        .catch( error => {
+            console.log( 'Error in fetching favs', error );
+        } )
     }
 
     beginScheduledJobs() {

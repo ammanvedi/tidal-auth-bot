@@ -1,12 +1,6 @@
 const TidalTokenGrabber = require( '../dist/TidalTokenGrabber' ).default;
 const fs = require( 'fs' );
 
-try {
-    fs.mkdirSync( './out' );
-} catch ( err ) {
-    console.log( 'directory already exists' );
-}
-
 jest.setTimeout( 80000 );
 
 describe( 'Favourites Fetcher', () => {

@@ -31,7 +31,13 @@ export default class TidalTokenGrabber {
     browser?: Browser;
     page?: Page;
 
-    constructor( protected config: TidalTokenConfig = DEFAULT_CONFIG ) {}
+    constructor( protected config: TidalTokenConfig = DEFAULT_CONFIG ) {
+        try {
+            fs.mkdirSync( './out' );
+        } catch ( err ) {
+            console.log( 'directory already exists' );
+        }
+    }
 
     async createBrowser() {
 
