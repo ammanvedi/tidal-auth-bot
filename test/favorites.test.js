@@ -9,18 +9,25 @@ try {
 
 jest.setTimeout( 50000 );
 
-
-
 describe( 'Favourites Fetcher', () => {
 
     let ttg;
 
     beforeEach( () => {
         ttg = new TidalTokenGrabber();
-        return ttg.getFavoritesResponse();
-    } )
+    } );
 
-    it( 'creates favorites JSON file', () => {
-        fs.readFileSync( './out/favourites.json', 'utf8' );
-    } )
-} )
+    it( 'Returns JSON properly', done => {
+
+        ttg.getFavoritesResponse()
+            .then( values => {
+
+                expect( values.length ).toBe( 2 );
+                expect( typeof values[ 1 ] ).toBe( 'object' );
+                expect( values[ 1 ].items.length > 1 ).toBe( true );
+                expect( values[ 1 ].limit ).toBe( 50 ); 
+                expect( typeof values[ 1 ].lastUpdated ).toBe( 'number' );
+                done();
+            } )
+    } );
+} );
