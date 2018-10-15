@@ -5,8 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "rm -r ./test/out/ || tsc && cd test && jest --runInBand",
-    "build": "rm -r ./dist && tsc && npm run start",
-    "start": "cd dist && node run.js"
+    "build": "rm -r ./dist || tsc",
+    "start": "npm run build && cd dist && node run.js"
   },
   "keywords": [
     "tidal",
