@@ -7,7 +7,7 @@ const express = require( 'express' );
 
 export interface TidalServerConfig {
     favoritesFetchInterval: number,
-    port: number
+    port: string | number
 };
 
 const DEFAULT_CONFIG: TidalServerConfig = {

@@ -53,6 +53,9 @@ class TidalServer {
             .then((values) => {
             const favoritesJSON = values[1];
             this.cache.setKey('favorites', favoritesJSON);
+        })
+            .catch(error => {
+            console.log('Error in fetching favs', error);
         });
     }
     beginScheduledJobs() {
