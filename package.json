@@ -4,7 +4,7 @@
   "description": "lambda that uses pupeteer to obtain a tidal session id, and then enable calls to their api",
   "main": "src/index.js",
   "scripts": {
-    "test": "rm -r ./test/out/ || tsc && cd test && jest",
+    "test": "rm -r ./test/out/ || tsc && cd test && jest --runInBand",
     "build": "rm -r ./dist && tsc && npm run start",
     "start": "cd dist && node index.js"
   },
@@ -15,8 +15,11 @@
   "author": "amman.vedi@gmail.com",
   "license": "MIT",
   "dependencies": {
+    "@types/express": "^4.16.0",
     "@types/puppeteer": "^1.9.0",
+    "express": "^4.16.4",
     "jest": "^23.6.0",
+    "node-fetch": "^2.2.0",
     "puppeteer": "^1.9.0"
   }
 }
