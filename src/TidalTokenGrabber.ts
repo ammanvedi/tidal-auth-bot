@@ -44,7 +44,7 @@ export default class TidalTokenGrabber {
         try {
             this.browser = await puppeteer.launch();
         } catch ( error ) {
-            console.log( 'error launching' );
+            console.log( 'error launching', error );
             return;
         }
         

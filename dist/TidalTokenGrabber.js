@@ -32,7 +32,7 @@ class TidalTokenGrabber {
             this.browser = await puppeteer.launch();
         }
         catch (error) {
-            console.log('error launching');
+            console.log('error launching', error);
             return;
         }
         if (!this.browser) {
