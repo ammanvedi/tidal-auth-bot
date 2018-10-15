@@ -84,7 +84,10 @@ export default class TidalTokenGrabber {
 
         if ( waitForNavigation ) {
             await Promise.all( [
-                this.page.waitForNavigation( { waitUntil: "networkidle0" } ),
+                this.page.waitForNavigation( {
+                    waitUntil: "networkidle0",
+                    timeout: 300000
+                } ),
                 this.page.click( selector ),
               ] );
         } else {

@@ -7,7 +7,7 @@ try {
     console.log( 'directory already exists' );
 }
 
-jest.setTimeout( 50000 );
+jest.setTimeout( 80000 );
 
 describe( 'Favourites Fetcher', () => {
 
