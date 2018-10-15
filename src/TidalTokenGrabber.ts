@@ -22,6 +22,10 @@ export interface TidalTokenConfig {
     auth: TidalAuthConfig
 }
 
+export interface FavoritesData {
+    lastUpdated: number
+}
+
 export default class TidalTokenGrabber {
 
     browser?: Browser;
@@ -135,7 +139,6 @@ export default class TidalTokenGrabber {
         }
 
         console.log( `Screenshot taken ${ filename }...` )
-
     }
 
     async destroyBrowser() {
@@ -153,24 +156,23 @@ export default class TidalTokenGrabber {
 
     onFavouritesResult( res: Response ) {
         return res.json()
-            .then( ( result: object ) => {
-                fs.writeFileSync( path.join( this.config.outDir, 'favourites.json' ), JSON.stringify( result ), { encoding: 'utf8' } );
-                return;
-            } )
-            .then( () => {
-                this.destroyBrowser()
-            } )
+            .then( ( result: FavoritesData ) => {
+                this.destroyBrowser();
+                result.lastUpdated = new Date().getTime();
+                return result;
+            } );
     }
 
-    async getFavoritesResponse() {
+    getFavoritesResponse(): Promise<any> {
 
-        await this.createBrowser();
-
-        return Promise.all( [
-            this.openFavourites(),
-            this.waitForResponse( 'favorites/tracks' )
-                .then( res => this.onFavouritesResult( res ) )
-        ] )
+        return this.createBrowser()
+            .then( () => {
+                return Promise.all( [
+                    this.openFavourites(),
+                    this.waitForResponse( 'favorites/tracks' )
+                        .then( res => this.onFavouritesResult( res ) )
+                ] );
+            } );
     }
 
     openFavourites() {
